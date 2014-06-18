@@ -195,12 +195,12 @@ $ConfVars->{BlackoutWeekDays}  = 2;
 $ConfVars->{RsyncLogLevel}     = 2;
 
 if ( $opts{syntaxCheck} ) {
-    system("perl -Ilib -c conf/config.pl >& /dev/null")
+    system("perl -Ilib -c conf/config.pl >/dev/null 2>&1")
             && die("$0: conf/config.pl contains a syntax error (or someone killed me)\n");
 }
 foreach my $file ( @PerlSrc ) {
     if ( $opts{syntaxCheck} ) {
-        system("perl -Ilib -c $file >& /dev/null")
+        system("perl -Ilib -c $file >/dev/null 2>&1")
             && die("$0: $file contains a syntax error (or someone killed me)\n");
     }
     #
